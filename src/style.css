@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -6,7 +7,6 @@ body {
 }
 
 /* HERO */
-
 .hero {
   height: 100vh;
   background-image: url("../images/milan.jpg");
@@ -49,7 +49,6 @@ body {
 }
 
 /* SECTIONS */
-
 .section {
   padding: 80px 20px;
 }
@@ -69,8 +68,7 @@ body {
   margin-bottom: 40px;
 }
 
-/* WHY MILAN */
-
+/* WHY MILAN - 2 Column */
 .two-column {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -84,7 +82,6 @@ body {
 }
 
 /* CARD GRID */
-
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -96,18 +93,6 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-}
-
-.card-images img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.card-images img {
-  width: 100%;
-  border-radius: 6px;
 }
 
 .card h3 {
@@ -122,61 +107,128 @@ body {
   color: #555;
 }
 
-/* RESPONSIVE */
-
-@media (max-width: 900px) {
-  .two-column {
-    grid-template-columns: 1fr;
-  }
-  .card-images {
-    grid-template-columns: 1fr;
-  }
-
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h1 {
-    font-size: 48px;
-  }
-}
-.map-embed {
+/* CARD IMAGES & MAPS */
+.card-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   width: 100%;
-  height: 160px;
-  border-radius: 6px;
 }
+
+.card-images img,
+.card-images iframe {
+  width: 100%;
+  height: 200px; /* unified height for images and maps */
+  object-fit: cover;
+  border-radius: 8px;
+  transition: filter 0.3s ease;
+}
+
+.card-images img:hover {
+  filter: grayscale(50%);
+}
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* subtle lift */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+.card-images img,
+.card-images iframe {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.card-images img:hover {
+  filter: grayscale(50%);
+  transform: scale(1.05); /* subtle zoom */
+}
+
+.card-images iframe:hover {
+  transform: scale(1.02); /* slight zoom on map too */
+}
+/* MINI GALLERY */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.gallery-text {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+/* FOOTER */
 /* Footer Styles */
 .site-footer {
-  background: #272142; /* match dark tone from site */
+  background: #272142;
   color: #fff;
-  padding: 60px 20px 30px;
+  padding: 60px 20px 40px;
   font-size: 16px;
 }
 
 .footer-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 40px;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto; /* center the grid */
 }
 
 .footer-section {
-  flex: 1 1 250px;
-  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* top-align everything */
 }
 
 .footer-section h3 {
   font-family: "Playfair Display", serif;
   font-size: 20px;
-  margin-bottom: 15px;
-  color: #6c63ff; /* accent color matching buttons/links */
+  margin: 0 0 15px 0; /* remove extra default margins */
+  color: #c8a2ff; /* lilac */
 }
 
 .footer-section p,
 .footer-section ul {
   color: #fff;
-  margin: 0;
-  line-height: 1.5;
+  margin: 0 0 10px 0; /* consistent spacing */
+  line-height: 1.6;
 }
 
 .footer-section ul {
@@ -189,18 +241,31 @@ body {
 }
 
 .footer-section ul li a {
-  color: #6c63ff;
+  color: #c8a2ff; /* lilac links */
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-section ul li a:hover {
-  color: #5a52e0;
+  color: #b18fff; /* slightly darker lilac on hover */
+}
+
+/* GitHub Link */
+.footer-section .github-link {
+  display: block;
+  margin-top: 12px;
+  color: #c8a2ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-section .github-link:hover {
+  color: #b18fff;
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 50px;
   font-size: 14px;
   color: #aaa;
   border-top: 1px solid #444;
@@ -210,100 +275,156 @@ body {
 /* Responsive Footer */
 @media (max-width: 900px) {
   .footer-grid {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 30px;
   }
 }
-/* Restaurant & Attraction grids */
-.restaurant-grid,
-.attraction-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+/* Responsive Footer */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+/* Responsive Footer */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 }
 
-.restaurant-card,
-.attraction-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
+/* MINI GALLERY & SECTION ALIGNMENT */
+#what-to-do {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+/* HTML TABLE */
+/* Table Container: make it card-like */
+.table-responsive {
+  overflow-x: auto;
+  margin-top: 20px;
   background: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border-radius: 10px;
   padding: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
 }
 
-.card-images {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  width: 100%;
+/* Align table intro text with table */
+.table-intro-wrapper {
+  max-width: 1100px;
+  margin: 0 auto 20px auto; /* center and add spacing below */
 }
 
-.card-images img,
-.card-images .embed {
+.table-intro {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+}
+
+/* Table Styling */
+.table-public-transport {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  border-collapse: collapse;
   border-radius: 8px;
+  overflow: hidden;
 }
 
-/* Footer */
-.site-footer {
-  background: #272142;
-  color: #fff;
-  padding: 60px 20px;
+.table-public-transport th,
+.table-public-transport td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
+.table-public-transport th {
+  background-color: #6c63ff;
+  color: white;
 }
 
-.footer-section h3 {
-  margin-bottom: 15px;
+.table-public-transport tr:nth-child(even) {
+  background-color: #f9f7fe;
 }
 
-.footer-section a {
-  color: #6c63ff;
-  text-decoration: none;
-}
-
-.footer-section a:hover {
-  color: #5a52e0;
-}
-
-.footer-section p {
-  line-height: 1.5;
+/* Hover effect for rows */
+.table-public-transport tbody tr:hover {
+  background-color: #e2e0f9;
+  transition: background-color 0.3s ease;
 }
 
 /* Responsive adjustments */
 @media (max-width: 900px) {
-  .card-images {
-    grid-template-columns: 1fr; /* stack images/maps on mobile */
+  .table-public-transport th,
+  .table-public-transport td {
+    padding: 10px;
+    font-size: 14px;
+  }
+  .table-intro {
+    font-size: 15px;
   }
 }
-/* Mini Gallery */
-/* Mini Gallery */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
 
-.gallery-grid img {
+/* Table Styling */
+.table-public-transport {
   width: 100%;
-  aspect-ratio: 4 / 3; /* keeps all images proportional */
-  object-fit: cover;
+  border-collapse: collapse;
   border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* Align text with the gallery width */
-.gallery-text {
-  margin-top: 20px;
-  font-size: 16px;
-  color: #555;
-  line-height: 1.6;
+.table-public-transport th,
+.table-public-transport td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.table-public-transport th {
+  background-color: #6c63ff;
+  color: white;
+}
+
+.table-public-transport tr:nth-child(even) {
+  background-color: #f9f7fe;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .table-public-transport th,
+  .table-public-transport td {
+    padding: 10px;
+    font-size: 14px;
+  }
+  .table-intro {
+    font-size: 15px;
+  }
+}
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+  .card-images {
+    grid-template-columns: 1fr;
+  }
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero h1 {
+    font-size: 48px;
+  }
+  .footer-grid {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+/* Base section padding */
+.section {
+  padding: 40px 20px; /* reduced from 80px */
 }
