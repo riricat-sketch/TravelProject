@@ -214,3 +214,96 @@ body {
     gap: 30px;
   }
 }
+/* Restaurant & Attraction grids */
+.restaurant-grid,
+.attraction-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.restaurant-card,
+.attraction-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+}
+
+.card-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.card-images img,
+.card-images .embed {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Footer */
+.site-footer {
+  background: #272142;
+  color: #fff;
+  padding: 60px 20px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.footer-section h3 {
+  margin-bottom: 15px;
+}
+
+.footer-section a {
+  color: #6c63ff;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: #5a52e0;
+}
+
+.footer-section p {
+  line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .card-images {
+    grid-template-columns: 1fr; /* stack images/maps on mobile */
+  }
+}
+/* Mini Gallery */
+/* Mini Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* keeps all images proportional */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Align text with the gallery width */
+.gallery-text {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
